@@ -214,11 +214,7 @@ module.exports = function(server, sessionStore) {
 														}
 														// send twitter notification if we have a valid twitter handle and the user has the option enabled
 														if(activeUser.twitter.username && activeUser.twitter_notifications) {
-															twitter.post('statuses/update', { status: '@' + activeUser.twitter.username + ' There is a Concarneau game where it is your turn: https://concarneau.herokuapp.com?' + Math.floor(Math.random()*1000000) }, function(err) {
-																if(err) {
-																	console.log('twitter failed: ' + err);
-																}
-															});
+															twitter.post('statuses/update', { status: '@' + activeUser.twitter.username + ' There is a Concarneau game where it is your turn: https://concarneau.herokuapp.com?' + Math.floor(Math.random()*1000000) }).catch(console.error);
 														}
 													}
 													// get distinct list of user IDs in the game
